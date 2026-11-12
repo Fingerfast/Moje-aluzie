@@ -1,10 +1,9 @@
 import Link from "next/link";
 
-// Výhled z okna: panorama Pálavy (Wikimedia Commons). Před spuštěním webu
-// stáhnout do /public/hero/palava.jpg a ověřit licenci a autora na stránce souboru.
-const PALAVA_FILE = "Drnholec_(Dürnholz)_and_Pavlovské_vrchy_(Pollauer_Berge)_-_panorama.JPG";
-const PALAVA_URL = `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(PALAVA_FILE)}?width=2560`;
-const PALAVA_PAGE = `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(PALAVA_FILE)}`;
+// Výhled z okna: Drnholec a Pavlovské vrchy (Pálava), pohled z rozhledny U křížku.
+// Autor: Pudelek (Marcin Szala), Wikimedia Commons, licence CC BY-SA 3.0.
+// Zmenšeno na šířku 2560 px. Uvedení autora a licence je podmínkou licence.
+import { PALAVA } from "@/lib/credits";
 
 export default function Hero() {
   return (
@@ -26,7 +25,7 @@ export default function Hero() {
             <path key={i} d={`M${-40 + i * 80} 900 L${200 + i * 70} 760`} stroke="#4a6533" strokeWidth="3" opacity=".45" />
           ))}
         </svg>
-        <img className="hero-photo" src={PALAVA_URL} alt="" />
+        <img className="hero-photo" src={PALAVA.src} alt="" />
       </div>
 
       {/* Zebra roleta stažená do poloviny okna */}
@@ -54,7 +53,10 @@ export default function Hero() {
         </div>
       </div>
 
-      <a className="hero-credit" href={PALAVA_PAGE} target="_blank" rel="noreferrer">Foto: Pálava, Wikimedia Commons</a>
+      <p className="hero-credit">
+        Foto: <a href={PALAVA.page} target="_blank" rel="noreferrer">{PALAVA.author}</a>,{" "}
+        <a href={PALAVA.licenseUrl} target="_blank" rel="noreferrer">{PALAVA.license}</a>, upraveno
+      </p>
     </section>
   );
 }

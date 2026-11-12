@@ -1,8 +1,8 @@
 // Produkty převzaté z malta-blinds.com (stejní dodavatelé).
-// Texty jsou přeložené ze štítků na maltském webu. Obrázky se zatím načítají
-// přímo z malta-blinds.com; po získání zdrojového kódu se zkopírují do /public.
+// Texty jsou přeložené ze štítků na maltském webu. Obrázky jsou stažené
+// z malta-blinds.com do /public/uploads se stejnými cestami jako na Maltě.
 
-export const SOURCE = "https://malta-blinds.com";
+export const SOURCE = "";
 
 export type Group = "horizontalni" | "vertikalni";
 
@@ -105,7 +105,7 @@ export function getProduct(slug: string) {
   return products.find((p) => p.slug === slug);
 }
 
-/** Volby konfigurátoru podle maltského webu. Hodnoty se doplní ze zdrojového kódu. */
+/** Volby konfigurátoru podle maltského webu. Konkrétní hodnoty jsou v lib/catalog.ts. */
 export const OPTION_GROUPS = [
   "Látka",
   "Regulace světla",
